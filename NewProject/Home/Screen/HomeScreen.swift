@@ -11,13 +11,7 @@ import SnapKit
 class HomeScreen: UIView {
     
     
-    lazy var subImageView: UIImageView = {
-        let img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.image = UIImage(named: "background 1")
     
-        return img
-    }()
     
     lazy var perfilImage: UIImageView = {
         let img = UIImageView()
@@ -27,14 +21,14 @@ class HomeScreen: UIView {
         img.contentMode = .scaleAspectFill
         img.layer.cornerRadius = 75
         img.layer.borderWidth = 0.8
-        img.layer.borderColor = .init(gray: 255/255, alpha: 1.0)
+        img.layer.borderColor = UIColor.black.cgColor
         return img
     }()
     
     lazy var backgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.clipsToBounds = true
         view.layer.cornerRadius = 6.6
         return view
@@ -43,7 +37,7 @@ class HomeScreen: UIView {
     lazy var backgroundSkillsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.clipsToBounds = true
         view.layer.cornerRadius = 6.6
         return view
@@ -52,7 +46,7 @@ class HomeScreen: UIView {
     lazy var backgroundProjectsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .gray.withAlphaComponent(0.6)
+        view.backgroundColor = .black
         view.clipsToBounds = true
         view.layer.cornerRadius = 6.6
         return view
@@ -62,10 +56,9 @@ class HomeScreen: UIView {
            let button = UIButton(type: .system)
            button.translatesAutoresizingMaskIntoConstraints = false
            button.setTitle("SKILLS", for: .normal)
-           button.setTitleColor(.black, for: .normal)
+           button.setTitleColor(.white, for: .normal)
 //           button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
-           button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-           
+           button.titleLabel?.font = UIFont(name: "SFMono-Regular", size: 16)
            button.titleLabel?.textAlignment = .center
            return button
        }()
@@ -74,18 +67,18 @@ class HomeScreen: UIView {
            let button = UIButton(type: .system)
            button.translatesAutoresizingMaskIntoConstraints = false
            button.setTitle("PROJETOS", for: .normal)
-           button.setTitleColor(.black, for: .normal)
+           button.setTitleColor(.white, for: .normal)
 //           button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
-           button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+           button.titleLabel?.font = UIFont(name: "SFMono-Regular", size: 16)
            
            button.titleLabel?.textAlignment = .center
            return button
        }()
-        
+    
     
     
     func addElements(){
-        addSubview(subImageView)
+        
         addSubview(perfilImage)
         addSubview(backgroundView)
         addSubview(backgroundSkillsView)
@@ -97,7 +90,7 @@ class HomeScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
-        subImageConstraints()
+     
         configPerfilImgConstraints()
         backgroundViewConstraints()
         backgroundSkillsViewConstraints()
@@ -119,18 +112,11 @@ class HomeScreen: UIView {
         }
     }
     
-    private func subImageConstraints(){
-        subImageView.snp.makeConstraints{ make in
-            make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(0)
-            make.top.equalTo(snp.top).offset(0)
-            make.right.equalTo(safeAreaLayoutGuide.snp.right).offset(0)
-            make.bottom.equalTo(snp.bottom).offset(0)
-            }
-        }
+
     private func backgroundViewConstraints(){
         backgroundView.snp.makeConstraints{ make in
-            make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(15)
-            make.right.equalTo(safeAreaLayoutGuide.snp.right).inset(15)
+            make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(24)
+            make.right.equalTo(safeAreaLayoutGuide.snp.right).inset(24)
             make.top.equalTo(perfilImage.snp.bottom).offset(30)
             make.height.equalTo(300)
           
@@ -140,8 +126,8 @@ class HomeScreen: UIView {
         backgroundSkillsView.snp.makeConstraints{ make in
             make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(24)
             make.right.equalTo(safeAreaLayoutGuide.snp.right).inset(24)
-            make.top.equalTo(backgroundView.snp.bottom).offset(25)
-            make.height.equalTo(50)
+            make.top.equalTo(backgroundView.snp.bottom).offset(20)
+            make.height.equalTo(40)
           
         }
     }
@@ -153,7 +139,7 @@ class HomeScreen: UIView {
             make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(24)
             make.right.equalTo(safeAreaLayoutGuide.snp.right).inset(24)
             make.top.equalTo(backgroundSkillsView.snp.bottom).offset(15)
-            make.height.equalTo(50)
+            make.height.equalTo(40)
           
         }
     }
